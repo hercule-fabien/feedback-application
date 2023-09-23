@@ -4,7 +4,7 @@ import Header from "./components/Header";
 function App(props) {
     return (
         <>
-            <Header text="Hello World" />
+            <Header />
             <h1>My App</h1>
         </>
     );
