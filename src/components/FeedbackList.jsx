@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import FeedbackItem from "./FeedbackItem";
-import PropTypes from "prop-types";
+import FeedbackContext from "../context/FeedbackContext";
 
-function FeedbackList({feedback, handleDelete}) {
-    if(!feedback || feedback.length === 0) {
+function FeedbackList() {
+    const {feedback} = useContext(FeedbackContext);
+
+    if (!feedback || feedback.length === 0) {
         return <p>No Feedback Yet</p>
     }
     return (
@@ -12,21 +14,10 @@ function FeedbackList({feedback, handleDelete}) {
                 <FeedbackItem
                     key={item.id}
                     item={item}
-                    handleDelete={handleDelete}
                 />
             ))}
         </div>
     );
-}
-
-FeedbackList.propTypes = {
-    feedback: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            text: PropTypes.string,
-            rating: PropTypes.number,
-        })
-    ),
 }
 
 export default FeedbackList;
