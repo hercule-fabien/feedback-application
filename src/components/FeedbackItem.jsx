@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import {FaTimes, FaEdit} from 'react-icons/fa'
 
 function FeedbackItem({item}) {
-    const {deleteFeedback} = useContext(FeedbackContext);
+    const {deleteFeedback, editFeedback} = useContext(FeedbackContext);
     return (
         <Card className="card">
             <div className="num-display">{item.rating}</div>
@@ -13,7 +13,10 @@ function FeedbackItem({item}) {
                 onClick={() => deleteFeedback(item.id)}
                 className="close"><FaTimes color='purple'/>
             </button>
-            <button className="edit">
+            <button
+                className="edit"
+                onClick={() => editFeedback(item)}
+            >
                 <FaEdit color='purple' />
             </button>
             <div className="text-display">{item.text}</div>
